@@ -1,0 +1,14 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer"><title>RuedoPlay · volver a la oficina</title>
+<body style="font-family:-apple-system,Helvetica,sans-serif;background:#f6ecd9;padding:40px;color:#2b211b">
+<h1>Volviendo a la oficina de RuedoPlay…</h1>
+<p>Esta página solo reenvía la autorización de Instagram a la oficina de tu Mac (127.0.0.1). No guarda nada.</p>
+<p><a id="volver" href="#">Si no vuelve sola, pulsa aquí</a></p>
+<script>
+  var q = new URLSearchParams(location.search);
+  var destino = "http://127.0.0.1:8742/oauth/instagram/vuelta?" + new URLSearchParams({
+    code: (q.get("code") || "").replace(/#_$/, ""), state: q.get("state") || "", error: q.get("error") || ""}).toString();
+  document.getElementById("volver").href = destino;
+  history.replaceState(null, "", location.pathname);   // quita el código de la barra y del historial
+  location.replace(destino);
+</script></body></html>
